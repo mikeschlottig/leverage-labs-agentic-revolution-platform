@@ -16,6 +16,8 @@ import { LandingPage } from '@/pages/LandingPage'
 import { DashboardLayout } from '@/layouts/DashboardLayout'
 import { Overview } from '@/pages/dashboard/Overview'
 import { AgentBuilder } from '@/pages/dashboard/AgentBuilder'
+import { KnowledgeBase } from '@/pages/dashboard/KnowledgeBase'
+import { ToolShop } from '@/pages/dashboard/ToolShop'
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
   {
@@ -42,11 +44,15 @@ const router = createBrowserRouter([
       },
       {
         path: "workers",
-        element: <div className="p-8">Build Workers View (Coming Soon)</div>,
+        element: <div className="p-8">Workers integration coming in Phase 3</div>,
       },
       {
         path: "knowledge",
-        element: <div className="p-8">Knowledge Base View (Coming Soon)</div>,
+        element: <KnowledgeBase />,
+      },
+      {
+        path: "tools",
+        element: <ToolShop />,
       },
       {
         path: "data",
