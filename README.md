@@ -2,7 +2,7 @@
 
 A production-ready AI agent chatbot built with Cloudflare Workers, Agents SDK, and Model Context Protocol (MCP) integration. Features intelligent tool calling, multi-model support (Gemini, Claude, GPT), real-time streaming, and persistent conversation management using Durable Objects.
 
-[cloudflarebutton]
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/mikeschlottig/leverage-labs-agentic-revolution-platform)
 
 ## ✨ Features
 
@@ -66,7 +66,7 @@ bun run deploy
 bun cf-typegen
 ```
 
-[cloudflarebutton]
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/mikeschlottig/leverage-labs-agentic-revolution-platform)
 
 ## 📖 Usage
 
