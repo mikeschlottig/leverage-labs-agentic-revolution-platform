@@ -25,22 +25,3 @@ export const KNOWLEDGE_BASE_ITEMS = [
   { id: 'k2', title: 'Edge Performance Guide', type: 'wiki', updated: '2024-03-18' },
   { id: 'k3', title: 'D1 Schema Best Practices', type: 'snippet', updated: '2024-03-15' },
 ];
-export const WORKER_LIST = [
-  { id: 'w1', name: 'core-agent-orchestrator', status: 'Deployed', updatedAt: '2 hours ago' },
-  { id: 'w2', name: 'data-pipeline-sync', status: 'Deployed', updatedAt: '5 hours ago' },
-  { id: 'w3', name: 'mcp-proxy-server', status: 'Updating', updatedAt: 'Just now' },
-  { id: 'w4', name: 'auth-gateway-edge', status: 'Deployed', updatedAt: '1 day ago' },
-];
-export const D1_DATABASES = [
-  { id: 'db1', name: 'Studio_Core_DB', tables: ['agent_logs', 'sessions', 'audit_trail'], rowCount: '1.2M', region: 'WNAM' },
-  { id: 'db2', name: 'Analytics_Storage', tables: ['request_metrics', 'latency_stats'], rowCount: '450k', region: 'EEUR' },
-];
-export const R2_BUCKETS = [
-  { name: 'agent-knowledge-lake', size: '2.4 TB', objectCount: '142,000', region: 'Global', createdAt: '2024-01-12' },
-  { name: 'deployed-assets-cdn', size: '14 GB', objectCount: '4,200', region: 'Global', createdAt: '2024-02-28' },
-];
-export const DATA_PIPELINES = [
-  { id: 'p1', name: 'Agent Intelligence Sync', source: 'ChatAgent State', destination: 'D1 Analytics', frequency: 'Real-time' },
-  { id: 'p2', name: 'Large Asset Ingestion', source: 'R2 Intake Bucket', destination: 'Knowledge Graph', frequency: 'Daily' },
-  { id: 'p3', name: 'Audit Log Archival', source: 'Worker Runtime Logs', destination: 'R2 Cold Storage', frequency: 'Hourly' },
-];

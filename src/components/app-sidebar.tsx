@@ -1,72 +1,112 @@
-/* This is a demo sidebar. **COMPULSORY** Edit this file to customize the sidebar OR remove it from appLayout OR don't use appLayout at all */
 import React from "react";
-import { Home, Layers, Compass, Star, Settings, LifeBuoy } from "lucide-react";
+import { 
+  LayoutDashboard, 
+  Terminal, 
+  Wand2, 
+  Database, 
+  Library, 
+  Settings, 
+  HelpCircle,
+  Network,
+  Cpu,
+  Workflow
+} from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarGroup,
   SidebarHeader,
-  SidebarSeparator,
-  SidebarInput,
   SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
-  SidebarMenuAction,
-  SidebarMenuBadge,
 } from "@/components/ui/sidebar";
-
+const MENU_GROUPS = [
+  {
+    label: "Workspace",
+    items: [
+      { title: "Overview", icon: LayoutDashboard, url: "/app/overview" },
+      { title: "Agent Builder", icon: Wand2, url: "/app/builder" },
+      { title: "Workflows", icon: Workflow, url: "/app/builder" },
+    ]
+  },
+  {
+    label: "Infrastructure",
+    items: [
+      { title: "Build Workers", icon: Terminal, url: "/app/workers" },
+      { title: "MCP Tool Shop", icon: Network, url: "/app/knowledge" },
+      { title: "Data Pipelines", icon: Database, url: "/app/data" },
+    ]
+  },
+  {
+    label: "Knowledge",
+    items: [
+      { title: "Personas", icon: Cpu, url: "/app/knowledge" },
+      { title: "Global Prompt Library", icon: Library, url: "/app/knowledge" },
+    ]
+  }
+];
 export function AppSidebar(): JSX.Element {
+  const location = useLocation();
   return (
-    <Sidebar>
-      <SidebarHeader>
-        <div className="flex items-center gap-2 px-2 py-1">
-          <div className="h-6 w-6 rounded-md bg-gradient-to-br from-indigo-500 to-purple-500" />
-          <span className="text-sm font-medium">Demo Sidebar</span>
+    <Sidebar collapsible="icon" className="border-r border-zinc-200 dark:border-zinc-800">
+      <SidebarHeader className="p-4">
+        <div className="flex items-center gap-3 px-2">
+          <div className="h-8 w-8 shrink-0 rounded-lg bg-indigo-600 flex items-center justify-center">
+            <Network className="w-5 h-5 text-white" />
+          </div>
+          <span className="font-display font-bold text-lg tracking-tight truncate group-data-[collapsible=icon]:hidden">
+            Studio
+          </span>
         </div>
-        <SidebarInput placeholder="Search" />
       </SidebarHeader>
       <SidebarContent>
-        <SidebarGroup>
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <SidebarMenuButton asChild isActive>
-                <a href="#"><Home /> <span>Home</span></a>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-            <SidebarMenuItem>
-              <SidebarMenuButton asChild>
-                <a href="#"><Layers /> <span>Projects</span></a>
-              </SidebarMenuButton>
-              <SidebarMenuAction>
-                <Star className="size-4" />
-              </SidebarMenuAction>
-            </SidebarMenuItem>
-            <SidebarMenuItem>
-              <SidebarMenuButton asChild>
-                <a href="#"><Compass /> <span>Explore</span></a>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          </SidebarMenu>
-        </SidebarGroup>
-
-        <SidebarSeparator />
-
-        <SidebarGroup>
-          <SidebarGroupLabel>Quick Links</SidebarGroupLabel>
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <SidebarMenuButton asChild>
-                <a href="#"><Star /> <span>Starred</span></a>
-              </SidebarMenuButton>
-              <SidebarMenuBadge>5</SidebarMenuBadge>
-            </SidebarMenuItem>
-          </SidebarMenu>
-        </SidebarGroup>
+        {MENU_GROUPS.map((group) => (
+          <SidebarGroup key={group.label}>
+            <SidebarGroupLabel className="px-4 py-2 group-data-[collapsible=icon]:hidden">
+              {group.label}
+            </SidebarGroupLabel>
+            <SidebarMenu>
+              {group.items.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton
+                    asChild
+                    isActive={location.pathname === item.url}
+                    tooltip={item.title}
+                    className="hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+                  >
+                    <Link to={item.url}>
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroup>
+        ))}
       </SidebarContent>
-      <SidebarFooter>
-        <div className="px-2 text-xs text-muted-foreground">A simple shadcn sidebar</div>
+      <SidebarFooter className="p-4 border-t border-zinc-200 dark:border-zinc-800">
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton asChild tooltip="Settings">
+              <a href="#">
+                <Settings />
+                <span>Settings</span>
+              </a>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+          <SidebarMenuItem>
+            <SidebarMenuButton asChild tooltip="Documentation">
+              <a href="#">
+                <HelpCircle />
+                <span>Documentation</span>
+              </a>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
       </SidebarFooter>
     </Sidebar>
   );

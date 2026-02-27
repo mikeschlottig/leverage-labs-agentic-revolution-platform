@@ -6,23 +6,55 @@ import { createRoot } from 'react-dom/client'
 import {
   createBrowserRouter,
   RouterProvider,
+  Navigate,
 } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { RouteErrorBoundary } from '@/components/RouteErrorBoundary';
 import '@/index.css'
-import { HomePage } from '@/pages/HomePage'
-
+import { LandingPage } from '@/pages/LandingPage'
+import { DashboardLayout } from '@/layouts/DashboardLayout'
+import { Overview } from '@/pages/dashboard/Overview'
+import { AgentBuilder } from '@/pages/dashboard/AgentBuilder'
 const queryClient = new QueryClient();
-
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage />,
+    element: <LandingPage />,
     errorElement: <RouteErrorBoundary />,
   },
+  {
+    path: "/app",
+    element: <DashboardLayout />,
+    errorElement: <RouteErrorBoundary />,
+    children: [
+      {
+        index: true,
+        element: <Navigate to="/app/overview" replace />,
+      },
+      {
+        path: "overview",
+        element: <Overview />,
+      },
+      {
+        path: "builder",
+        element: <AgentBuilder />,
+      },
+      {
+        path: "workers",
+        element: <div className="p-8">Build Workers View (Coming Soon)</div>,
+      },
+      {
+        path: "knowledge",
+        element: <div className="p-8">Knowledge Base View (Coming Soon)</div>,
+      },
+      {
+        path: "data",
+        element: <div className="p-8">Data Pipelines View (Coming Soon)</div>,
+      },
+    ],
+  },
 ]);
-
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
@@ -32,4 +64,3 @@ createRoot(document.getElementById('root')!).render(
     </QueryClientProvider>
   </StrictMode>,
 )
-   
