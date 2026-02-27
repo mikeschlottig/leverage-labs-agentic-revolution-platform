@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Network, Database, Terminal, Search, ExternalLink, Settings, Play, Server } from 'lucide-react';
+import { Network, Database, Terminal, Search, ExternalLink, Settings, Play, Server, Plus } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { toast } from 'sonner';
@@ -48,7 +48,7 @@ export function ToolShop() {
             <CardHeader>
               <div className="flex items-center gap-3 mb-2">
                 <div className="h-10 w-10 rounded-lg bg-indigo-600/20 flex items-center justify-center">
-                  {tool.source.includes('D1') ? <Database className="h-5 w-5 text-indigo-400" /> : 
+                  {tool.source.includes('D1') ? <Database className="h-5 w-5 text-indigo-400" /> :
                    tool.source.includes('Workers') ? <Terminal className="h-5 w-5 text-indigo-400" /> :
                    <Network className="h-5 w-5 text-indigo-400" />}
                 </div>

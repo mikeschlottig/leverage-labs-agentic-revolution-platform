@@ -1,11 +1,11 @@
 import React from "react";
-import { 
-  LayoutDashboard, 
-  Terminal, 
-  Wand2, 
-  Database, 
-  Library, 
-  Settings, 
+import {
+  LayoutDashboard,
+  Terminal,
+  Wand2,
+  Database,
+  Library,
+  Settings,
   HelpCircle,
   Network,
   Cpu,
@@ -36,7 +36,7 @@ const MENU_GROUPS = [
     label: "Infrastructure",
     items: [
       { title: "Build Workers", icon: Terminal, url: "/app/workers" },
-      { title: "MCP Tool Shop", icon: Network, url: "/app/knowledge" },
+      { title: "MCP Tool Shop", icon: Network, url: "/app/tools" },
       { title: "Data Pipelines", icon: Database, url: "/app/data" },
     ]
   },

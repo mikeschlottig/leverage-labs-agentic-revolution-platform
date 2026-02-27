@@ -18,6 +18,8 @@ import { Overview } from '@/pages/dashboard/Overview'
 import { AgentBuilder } from '@/pages/dashboard/AgentBuilder'
 import { KnowledgeBase } from '@/pages/dashboard/KnowledgeBase'
 import { ToolShop } from '@/pages/dashboard/ToolShop'
+import { DataWorkspace } from '@/pages/dashboard/DataWorkspace'
+import { WorkersStudio } from '@/pages/dashboard/WorkersStudio'
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
   {
@@ -44,7 +46,7 @@ const router = createBrowserRouter([
       },
       {
         path: "workers",
-        element: <div className="p-8">Workers integration coming in Phase 3</div>,
+        element: <WorkersStudio />,
       },
       {
         path: "knowledge",
@@ -56,7 +58,7 @@ const router = createBrowserRouter([
       },
       {
         path: "data",
-        element: <div className="p-8">Data Pipelines View (Coming Soon)</div>,
+        element: <DataWorkspace />,
       },
     ],
   },
